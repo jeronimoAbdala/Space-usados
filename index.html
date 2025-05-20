@@ -229,10 +229,8 @@
         // 1) Extraer modelo para el nombre de la imagen
         const model = extractModel(product);
 
-        // 2) Verificar si model está vacío o es "-"
-            const imgSrc = (model && model !== '-') 
-                ? `images/images/iphone/${model}.png` 
-                : 'images/undefined.png';
+      // 2) Verificar si model está vacío o es "-"
+          const imgSrc = 'images/images/undefined.png'
 
         // (Opcional: si quieres usar la URL que viene en el CSV, podrías hacer:
         // const imgSrc = photoUrl || `images/images/phone/iphone-${model}.jpg`; )
