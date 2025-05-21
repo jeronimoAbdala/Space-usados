@@ -231,7 +231,7 @@
 
       // 2) Verificar si model está vacío o es "-"
       let imgSrc = photoUrl
-      if (photoUrl == '#N/A') {
+      if (photoUrl == '#N/A' || photoUrl == '') {
          imgSrc =  'images/images/undefined.png';
       } // const imgSrc = 'images/images/undefined.png'
 
@@ -240,7 +240,7 @@
 
         // 3) Link de WhatsApp
         const whatsappLink =
-          `https://api.whatsapp.com/send?phone=5491130200515&text=${encodeURIComponent(
+          `https://api.whatsapp.com/send?phone=5491141420680&text=${encodeURIComponent(
             `Hola!, quiero comprar ${product} por ${price} | IMEI:${imei}`
           )}`;
 
