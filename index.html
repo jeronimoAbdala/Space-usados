@@ -230,7 +230,10 @@
         const model = extractModel(product);
 
       // 2) Verificar si model está vacío o es "-"
-          const imgSrc = 'images/images/undefined.png'
+      let imgSrc = photoUrl
+      if (photoUrl == '#N/A') {
+         imgSrc =  'images/images/undefined.png';
+      } // const imgSrc = 'images/images/undefined.png'
 
         // (Opcional: si quieres usar la URL que viene en el CSV, podrías hacer:
         // const imgSrc = photoUrl || `images/images/phone/iphone-${model}.jpg`; )
@@ -251,9 +254,9 @@
         <h5>${price} USD</h5>
         <h5>${priceArg} ARS</h5>
       </div>
-      <div class="card-footer d-flex justify-content-between p-2">
-        <p>📍 ${location}</p>
-        <div>
+      <div class="card-footer d-flex justify-content-center align-content-center p-2">
+        
+        <div class="d-flex justify-content-center align-content-center p-2">
           ${videoUrl
             ? `<button 
                    class="btn btn-info btn-sm btn-view-video" 

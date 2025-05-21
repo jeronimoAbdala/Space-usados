@@ -30,6 +30,15 @@
 .card-footer p{
       margin: 7px;
 }
+.navbar{
+      padding: 10px 50px !important;
+    display: flex
+;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: row;
+}
 .card-footer div{
   gap: 3px;
 }
