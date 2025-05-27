@@ -247,7 +247,9 @@
         // 4) Ahora uso imgSrc sin problemas
         return `
      <div class="card card m-2 shadow-sm" style="width: 18rem;">
-      <img src="${imgSrc}" class="card-img-top" alt="${product}">
+      <div class="img-container"> 
+        <img src="${imgSrc}" class="card-img-top" alt="${product}">
+      </div>
       <div class="card-body">
         <h5 class="card-title">${product}</h5>
         <p class="card-text">${details || '—'}</p>
