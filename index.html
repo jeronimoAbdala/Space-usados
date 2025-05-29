@@ -95,6 +95,13 @@
   <!-- Contenedor de tarjetas -->
   <div id="phones-container" class="container">
 
+    <!-- justo antes de tu <div id="phones-container"> -->
+    <div id="loading" style="display: none; text-align: center; margin: 2rem;">
+      <div class="spinner"></div>
+      <p>Cargando datos, por favor espera…</p>
+    </div>
+
+
   </div>
   <div id="no-results" style="display: none; text-align: center; color: #888; font-weight: 500; margin-top: 2em;">
     <img src="https://img.icons8.com/ios-filled/100/888888/search--v1.png" alt="No encontrado"
@@ -138,8 +145,11 @@
     crossorigin="anonymous"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+       const loadingEl = document.getElementById('loading');
+
       const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRbO1uySPWALQyOjHS699REtEyKt7Znqhjsh5yocKy0ReSwQKM5QU6RFSXdBVhcbLYo-BQs219txXDN/pub?gid=366228928&single=true&output=csv';
       const ITEMS_PER_PAGE = 20;
+
       let allRows = [];
       let currentPage = 1;
 
@@ -151,9 +161,19 @@
       const container = document.getElementById('phones-container');
 
       async function fetchSheetValues() {
+        
+            loadingEl.style.display = 'block';
+
+
+        console.time('fetch');
         const res = await fetch(CSV_URL);
+        console.timeEnd('fetch');
+
+            loadingEl.style.display = 'none';
+
+
         const text = await res.text();
-        const rows = Papa.parse(text.trim(), { skipEmptyLines: true }).data;
+        const rows = Papa.parse(text.trim(), { skipEmptyLines: true}).data;
 
         // Filtrar filas donde el nombre del producto (por ejemplo, r[1]) esté vacío o nulo
         return rows.filter(row => row[1] && row[1].trim() !== ''); // Filtra si el campo de producto está vacío
